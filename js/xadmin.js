@@ -53,6 +53,7 @@ $(function () {
             obj.each(function(index, el) {
                 arr.push(obj.eq(index).attr('data-id'));
             });
+            console.log(arr);
             return arr;
         }
     }

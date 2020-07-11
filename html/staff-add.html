@@ -29,7 +29,7 @@
                     <span class="x-red">*</span>姓名
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="name" name="name" required lay-verify="nikename" autocomplete="off"
+                    <input type="text" id="name" name="employeeName" required lay-verify="nikename" autocomplete="off"
                         class="layui-input">
                 </div>
                 <div class="layui-form-mid layui-word-aux">
@@ -41,7 +41,7 @@
                     <span class="x-red">*</span>身份证号
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="username" name="username" required lay-verify="identity" autocomplete="off"
+                    <input type="text" id="username" name="idCard" required lay-verify="identity" autocomplete="off"
                         class="layui-input">
                 </div>
                 <div class="layui-form-mid layui-word-aux">
@@ -53,34 +53,13 @@
                     <span class="x-red">*</span>手机
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="phone" name="phone" required lay-verify="phone" autocomplete="off"
+                    <input type="text" id="phone" name="phoneNum" required lay-verify="phone" autocomplete="off"
                         class="layui-input">
                 </div>
                 <div class="layui-form-mid layui-word-aux">
                     <span class="x-red">*</span>
                 </div>
             </div>
-            <!-- <div class="layui-form-item">
-              <label for="L_pass" class="layui-form-label">
-                  <span class="x-red">*</span>密码
-              </label>
-              <div class="layui-input-inline">
-                  <input type="password" id="L_pass" name="pass" required lay-verify="pass"
-                  autocomplete="off" class="layui-input">
-              </div>
-              <div class="layui-form-mid layui-word-aux">
-                  6到16个字符
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="L_repass" class="layui-form-label">
-                  <span class="x-red">*</span>确认密码
-              </label>
-              <div class="layui-input-inline">
-                  <input type="password" id="L_repass" name="repass" required lay-verify="repass"
-                  autocomplete="off" class="layui-input">
-              </div>
-          </div> -->
             <div class="layui-form-item">
                 <label for="L_repass" class="layui-form-label">
                 </label>
@@ -110,16 +89,16 @@
                 console.log(data);
                 //发异步，把数据提交给php
                 $.ajax({
-                    typ: 'post',
-                    url: 'http://localhost:8888/Employee/admin/',
+                    type: 'post',
+                    url: 'http://localhost:8888/Employee/admin/insertemployee.action',
                     async: true,
                     dataType: "json",
                     data: $("#add_form").serialize,
                     success: function (resp) {
-                        if (resp.returnStatus == ) {
-                            alert("");
-                        } else if (resp.returnStatus == ) {
-                            alert("");
+                        if (resp.returnStatus == 7) {
+                            alert("数据库添加失败");
+                        } else if (resp.returnStatus == 8) {
+                            alert("员工姓名重复");
                         } else if (resp.returnStatus == 1) {
                             layer.alert("增加成功", { icon: 6 }, function () {
                                 // 获得frame索引
